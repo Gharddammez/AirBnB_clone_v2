@@ -10,7 +10,7 @@ import os
 
 # Set the environment variables
 env.user = 'ubuntu'  # Update with your username
-env.hosts = ['<IP web-01>', '<IP web-02>']  # Update with your server IPs
+env.hosts = ['34.232.52.252, 18.233.64.118']  # Update with your server IPs
 
 def do_deploy(archive_path):
     """

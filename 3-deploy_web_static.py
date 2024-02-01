@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-Fabric script that creates and distributes an, 
-archive to web servers using the function deploy.
+Fabric script that creates and distributes an archive to web servers using the function deploy.
 """
 
+from fabric.api import local
 from datetime import datetime
-import os
-from fabric.api import env, local, put, run
+from os.path import exists
+from fabric.operations import put, run
+from fabric.api import env
 from fabric.context_managers import cd
 
 # Set the environment variables
-env.user = 'ubuntu'
-env.hosts = ['<34.232.52.252>', '<18.233.64.118>']
-
+env.user = 'ubuntu'  # Update with your username
+env.hosts = ['34.232.52.252, 18.233.64.118']  # Update with your server IPs
 
 def do_pack():
     """
@@ -40,7 +40,6 @@ def do_pack():
     else:
         return archive_path
 
-
 def do_deploy(archive_path):
     """
     Distributes an archive to web servers.
@@ -51,7 +50,7 @@ def do_deploy(archive_path):
     Returns:
         True if all operations are done correctly, False otherwise.
     """
-    if not os.path.exists(archive_path):
+    if not exists(archive_path):
         return False
 
     # Get the filename without extension
@@ -85,7 +84,6 @@ def do_deploy(archive_path):
     print("New version deployed!")
 
     return True
-
 
 def deploy():
     """
