@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBNB Filters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}" type="text/css">
+</head>
+<body>
+    <header class="clearfix">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+            <h1>HBNB</h1>
+        </div>
+    </header>
+    <section class="filters">
+        <h1>Places</h1>
+        <div class="cities">
+            <h2>States:</h2>
+            <div class="popover">
+                {% for state in states %}
+                    <label class="popover-title">
+                        <input type="checkbox" class="states" name="states" id="{{ state.id }}">{{ state.name }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="cities">
+            <h2>Cities:</h2>
+            <div class="popover">
+                {% for city in cities %}
+                    <label class="popover-title">
+                        <input type="checkbox" class="cities" name="cities" id="{{ city.id }}">{{ city.name }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="amenities">
+            <h2>Amenities:</h2>
+            <div class="popover">
+                {% for amenity in amenities %}
+                    <label class="popover-title">
+                        <input type="checkbox" class="amenities" name="amenities" id="{{ amenity.id }}">{{ amenity.name }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <footer class="clearfix">
+        <div class="footer">
+            <p>Powered by HBNB</p>
+        </div>
+    </footer>
+</body>
+</html>
